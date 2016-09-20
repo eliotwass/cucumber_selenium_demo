@@ -10,7 +10,7 @@ Then(/^I will search for "([^"]*)"$/) do |searchText|
   fill_in 'lst-ib', with: searchText
 end
 
-Given (/^I wait for (5+) seconds?$/) do |n|
+Given (/^I wait for (10+) seconds?$/) do |n|
   sleep(n.to_i)
 end
 
@@ -35,8 +35,9 @@ And(/^contact information will appear at the bottom$/) do
   page.execute_script 'window.scrollBy(0,10000)'
 end
 
-Then(/^I will take a screenshot$/) do
-  sleep(5.to_i)
+Then(/^I will take a screenshot$/) do 
+sleep(5.to_i)
+Capybara.save_path = "/home/vagrant/googletest/screenshots/"
 screenshot_and_open_image
 end
 
