@@ -15,7 +15,7 @@ Given (/^I wait for (10+) seconds?$/) do |n|
 end
 
 Then(/^I should see "([^"]*)"$/) do |expectedText|
-  page.should have_content(expectedText)
+  page.has_content?(expectedText)
 end
 
 Given (/^I wait for (5+) seconds?$/) do |n|
@@ -27,17 +27,17 @@ Then(/^I will click the about SPR link$/) do
 end
 
 Then(/^SPR about page will display$/) do
-  page.should have_title('About SPR Technology Consultants')
+  page.has_title?('About SPR Technology Consultants')
 end
 
 And(/^contact information will appear at the bottom$/) do
-  page.should have_content('233 South Wacker Drive')
+  page.has_content?('233 South Wacker Drive')
   page.execute_script 'window.scrollBy(0,10000)'
 end
 
 Then(/^I will take a screenshot$/) do 
 sleep(5.to_i)
-Capybara.save_path = "/home/vagrant/googletest/screenshots/"
+Capybara.save_path = "/home/eliot/cucumber_selenium_demo/screenshots"
 screenshot_and_open_image
 end
 

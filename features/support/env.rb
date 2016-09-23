@@ -1,9 +1,10 @@
 require 'capybara/cucumber'
 require 'capybara-screenshot/cucumber'
- 
-Capybara.default_driver = :selenium 
-Capybara::Screenshot.webkit_options = { width: 1024, height: 5000 }
+require 'selenium-webdriver'
 
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
 
 
 
